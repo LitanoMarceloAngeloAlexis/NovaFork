@@ -1,0 +1,243 @@
+=========================================================
+INTEGRANTE 1 - AUTENTICACIÓN Y SEGURIDAD
+=========================================================
+
+### Login
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "username": "gaylin773@gmail.com",
+  "password": "prueba123"
+}
+
+### Endpoint Protegido
+GET http://localhost:8080/auth/protectedTest
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzgwMTA2Mzc2LCJleHAiOjE3ODAxMDk5NzZ9.BnkzuvMOdwHvBYCcoRcSdlI99Rbcf5N6Yt7Ztehy6PU
+
+### Registro
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser@gmail.com",
+  "password": "prueba123"
+}
+
+### Logout
+POST http://localhost:8080/auth/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzgwMTA2MzUyLCJleHAiOjE3ODAxMDk5NTJ9.NGt1KU2cpUcdzU2rutkaTtvZs579w2tHwFJxNwN74-k
+
+### Recuperar contraseña - envia token
+POST http://localhost:8080/auth/recuperar
+Content-Type: application/json
+
+{
+  "email": "angelolma2080@gmail.com"
+}
+
+### Cambiar contraseña con token
+POST http://localhost:8080/auth/cambiar-password
+Content-Type: application/json
+
+{
+  "email": "angelolma2080@gmail.com",
+  "token": "d1364738-e432-46f7-bdd2-3cd17aff81cf",
+  "nuevaPassword": "prueba123"
+}
+
+### Listar notificaciones de un usuario
+GET http://localhost:8080/notificaciones/listar
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzgwMTA2Mzc2LCJleHAiOjE3ODAxMDk5NzZ9.BnkzuvMOdwHvBYCcoRcSdlI99Rbcf5N6Yt7Ztehy6PU
+
+=========================================================
+INTEGRANTE 2 - PRODUCTOS
+=========================================================
+
+### Obtener todos los productos
+GET http://localhost:8080/products/getAllProducts
+
+### Agregar un nuevo producto (solo ADMIN)
+POST http://localhost:8080/products/agregar
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzgwMTA2Mzc2LCJleHAiOjE3ODAxMDk5NzZ9.BnkzuvMOdwHvBYCcoRcSdlI99Rbcf5N6Yt7Ztehy6PU
+
+{
+  "codproducto": "CAF099",
+  "nombre": "Camara Prueba",
+  "categoria": "Camaras",
+  "stock": 45,
+  "preciocompra": 6.50,
+  "precioventa": 10.00,
+  "fechavencimiento": "2027-09-15T00:00:00"
+}
+
+### Eliminar producto por ID (solo ADMIN)
+DELETE http://localhost:8080/products/eliminar/17
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzgwMTA2Mzc2LCJleHAiOjE3ODAxMDk5NzZ9.BnkzuvMOdwHvBYCcoRcSdlI99Rbcf5N6Yt7Ztehy6PU
+
+### Modificar parcialmente un producto (solo ADMIN)
+PATCH http://localhost:8080/products/modificar/17
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzgwMTA2Mzc2LCJleHAiOjE3ODAxMDk5NzZ9.BnkzuvMOdwHvBYCcoRcSdlI99Rbcf5N6Yt7Ztehy6PU
+
+{
+  "nombre" : "Camara prueba cambio",
+  "stock": 60,
+  "precioventa": 11.50
+}
+
+### Obtener reporte de productos
+GET http://localhost:8080/products/getReport
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzgwMTA2Mzc2LCJleHAiOjE3ODAxMDk5NzZ9.BnkzuvMOdwHvBYCcoRcSdlI99Rbcf5N6Yt7Ztehy6PU
+
+=========================================================
+INTEGRANTE 3 - SUCURSALES
+=========================================================
+
+### Listar sucursales
+GET http://localhost:8080/sucursales/listar
+
+### Agregar una nueva sucursal
+POST http://localhost:8080/sucursales/agregar
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzgwMTA2Mzc2LCJleHAiOjE3ODAxMDk5NzZ9.BnkzuvMOdwHvBYCcoRcSdlI99Rbcf5N6Yt7Ztehy6PU
+
+{
+  "nombre": "Sucursal Prueba 2",
+  "direccion": "Calle Prueba 1234"
+}
+
+### Eliminar sucursal por ID (solo ADMIN)
+DELETE http://localhost:8080/sucursales/eliminar/11
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzgwMTA2Mzc2LCJleHAiOjE3ODAxMDk5NzZ9.BnkzuvMOdwHvBYCcoRcSdlI99Rbcf5N6Yt7Ztehy6PU
+
+### Modificar parcialmente una sucursal (solo ADMIN)
+PATCH http://localhost:8080/sucursales/modificar/10
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzgwMTA2Mzc2LCJleHAiOjE3ODAxMDk5NzZ9.BnkzuvMOdwHvBYCcoRcSdlI99Rbcf5N6Yt7Ztehy6PU
+
+{
+  "nombre": "Sucursal Norte Renovada"
+}
+
+### Obtener reporte de sucursales
+GET http://localhost:8080/sucursales/getReport
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzgwMTA2Mzc2LCJleHAiOjE3ODAxMDk5NzZ9.BnkzuvMOdwHvBYCcoRcSdlI99Rbcf5N6Yt7Ztehy6PU
+
+=========================================================
+INTEGRANTE 4 - CUENTAS Y ROLES
+=========================================================
+
+### Exportar Excel de cuentas (solo ADMIN)
+GET http://localhost:8080/accounts/export
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzgwMTA2Mzc2LCJleHAiOjE3ODAxMDk5NzZ9.BnkzuvMOdwHvBYCcoRcSdlI99Rbcf5N6Yt7Ztehy6PU
+
+### Listar cuentas (solo ADMIN)
+GET http://localhost:8080/accounts/listar
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzgwMTA2Mzc2LCJleHAiOjE3ODAxMDk5NzZ9.BnkzuvMOdwHvBYCcoRcSdlI99Rbcf5N6Yt7Ztehy6PU
+
+### Actualizar perfil del usuario autenticado
+PATCH http://localhost:8080/accounts/update-profile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzgwMTA2Mzc2LCJleHAiOjE3ODAxMDk5NzZ9.BnkzuvMOdwHvBYCcoRcSdlI99Rbcf5N6Yt7Ztehy6PU
+
+{
+  "alias": "Aylin",
+  "direccion": "Av. Principal 123",
+  "pais": "Perú",
+  "fechaNacimiento": "1990-05-12"
+}
+
+### Obtener reporte de cuentas de usuario
+GET http://localhost:8080/accounts/getReport
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzgwMTA2Mzc2LCJleHAiOjE3ODAxMDk5NzZ9.BnkzuvMOdwHvBYCcoRcSdlI99Rbcf5N6Yt7Ztehy6PU
+
+### Cambiar rol de usuario
+PATCH http://localhost:8080/accounts/changeRole
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzgwMTA2Mzc2LCJleHAiOjE3ODAxMDk5NzZ9.BnkzuvMOdwHvBYCcoRcSdlI99Rbcf5N6Yt7Ztehy6PU
+Content-Type: application/json
+
+{
+  "idcuenta": 9,
+  "rol": "ADMIN"
+}
+
+=========================================================
+INTEGRANTE 5 - REVIEWS, COMPRAS E IA
+=========================================================
+
+### Ingresar review como invitado | EndPoint libre
+POST http://localhost:8080/reviews/addReviewGuest
+Content-Type: application/json
+
+{
+  "nombre": "Angelo",
+  "email": "angelolma2080@gmail.com",
+  "cuerpo": "Buenooo",
+  "puntuacion": 5
+}
+
+### Ingresar review | EndPoint con token
+POST http://localhost:8080/reviews/addReview
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzgwMTA2Mzc2LCJleHAiOjE3ODAxMDk5NzZ9.BnkzuvMOdwHvBYCcoRcSdlI99Rbcf5N6Yt7Ztehy6PU
+
+{
+  "cuerpo": "Excelentes camaras 2",
+  "puntuacion": 5
+}
+
+### Obtener todas las reseñas
+GET http://localhost:8080/reviews/getReviews
+
+### Solicitar historial de compras
+GET http://localhost:8080/purchases/getPurchases
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzgwMTA2Mzc2LCJleHAiOjE3ODAxMDk5NzZ9.BnkzuvMOdwHvBYCcoRcSdlI99Rbcf5N6Yt7Ztehy6PU
+
+### Registrar nueva compra
+POST http://localhost:8080/purchases/newPurchase
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXlsaW43NzNAZ21haWwuY29tIiwiaWF0IjoxNzc5MzgyOTAwLCJleHAiOjE3NzkzODY1MDB9.GgIE-UZNxZzJGM9XW0ZDohZ0_OfPvYWXaCOJD_PRpAc
+
+{
+  "montoProcesado": 120.5,
+  "productos": [
+    {
+      "idProducto" : 3,
+      "quantity" : 5,
+      "instructions" : "No hay cableado"
+    },
+    {
+      "idProducto" : 9,
+      "quantity" : 5
+    }
+    ,
+    {
+      "idProducto" : 1,
+      "quantity" : 3,
+      "instructions" : "Con memoria extraible"
+    }
+  ],
+  "cityDelivery" : "Lima",
+  "addressDelivery" : "Ancon"
+}
+
+### Consultar a la IA | Modo recomendaciones (Nova clásico)
+POST http://localhost:8080/IA/consulta
+Content-Type: application/json
+
+{
+  "prompt": "Nova recomiendame una camara para interiores",
+  "mode" : "recommendations"
+}
+
+### Consultar a la IA | Modo soporte al cliente
+POST http://localhost:8080/IA/consulta
+Content-Type: application/json
+
+{
+  "prompt": "¿Cual es su numero de contacto?",
+  "mode" : "Support"
+}

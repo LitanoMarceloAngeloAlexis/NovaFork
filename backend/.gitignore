@@ -34,5 +34,3 @@ build/
 
 ## Contraseña de email ###
 /src/main/resources/email-credentials.properties
-
-*.http
