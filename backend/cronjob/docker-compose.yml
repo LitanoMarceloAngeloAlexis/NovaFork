@@ -1,0 +1,9 @@
+
+services:
+  backup:
+    build: ./backup-container
+    container_name: backup
+    environment:
+      PGPASSWORD: "contraseña, conservar comillas"
+    volumes:
+      - ./backups:/backups
